@@ -27,6 +27,13 @@ services:
       - db
       - search
 
+  indexer:
+    build: indexer-dockerfile
+    depends_on:
+      - db
+    volumes:
+      - /mnt/data:/home/search/data
+
   search:
     build: search-dockerfile
     restart: always
